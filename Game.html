@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Mac's Memory Game</title>
+  <meta charset="utf-8">
+
+  <style>
+
+    .header {
+      text-align: center;
+      color: rgb(255, 255, 255);
+      font-size: 30px;
+      background: rgb(95, 95, 95);
+    }
+
+    body { 
+        display: flex
+        height: 100%;
+        background: rgb(95, 95, 95);
+    }
+
+    .{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .wrapper {
+        display: flex;
+        flex-wrap: wrap; 
+        margin: auto; 
+        width: 100vh;
+        height: 100vh;
+        perspective: 1000px;
+    }
+
+    .card,
+    .counter {
+        position: relative;
+        width: calc(19% - 10px);
+        height: calc(20% - 10px); 
+        margin: 5px;
+        transform: scale(1);
+        transform-style: preserve-3d;
+        transition: transform .5s;
+    }
+
+    .card:active {
+        transform: scale(.90);
+    }
+
+    .card.flip {
+        transform: rotateY(180deg);
+    }
+
+    .backImage,
+    .frontImage {
+        position: absolute; 
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        border-radius: 5px;
+        backface-visibility: hidden; 
+    }
+
+    .backImage {
+        right: 0
+    }
+
+    #result {
+        position: absolute; 
+        padding-bottom: 25px; 
+        right: 0; 
+        height: 100%; 
+        font-size: 165px;
+    }
+
+    .counter {
+        text-align: center;
+    }
+
+    .backImage{
+        transform: rotateY(180deg);
+    }
+
+    .restartButton {
+        background-color: white;
+        border: black;
+        color: black;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 10px 20px;
+        width: 97%;
+    }
+
+  </style>
+
+<body>
+
+  <div class="header">
+    <h1>Mac's Memory Game</h1>
+  </div>
+  <a class = restartButton href="index.html"> Restart </a>
+  <div class = "wrapper">
+      
+    <div class = "counter">
+    <div id = "result"> </div>
+    </div>
+    <div class = "card" data-person = "JFK">
+    <img class = "backImage" src= "https://i.ibb.co/RT3JRxY/JFK100-John-Fitzgerald-Kennedy-tambie-n-conocido-como-JFK-presidente-35-de-los-Estados-Unidos-29-de-mayo-de-1917-22-de-noviembre-de-1963.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "DYLAN">
+    <img class = "backImage" src= "https://i.ibb.co/mRzJRVT/30-Best-Bob-Dylan-Black-and-White-Photos-On-This-Day-Music-singer-songwriter.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "ALI">
+    <img class = "backImage" src= "https://i.ibb.co/HTJhYty/45-Years-Ago-Muhammad-Ali-Fights-Joe-Frazier.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "ELVIS">
+    <img class = "backImage" src= "https://i.ibb.co/x8v4gbR/actor-adult-artist-276080.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "ELVIS">
+    <img class = "backImage" src= "https://i.ibb.co/J31jY81/black-and-white-black-and-white-casual-270968.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "DYLAN">
+    <img class = "backImage" src= "https://i.ibb.co/BnBsz4f/Bob-Dylan-plays-acoustic-guitar-and-smokes-a-cigarette-in-this-headshot-from-September-1962-in-New-York-City-New-York.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "ALI">
+    <img class = "backImage" src= "https://i.ibb.co/rHjWwGw/Ce-boxeur-qui-a-marque-l-histoire-est-ne-le-17-Janvier-1942-Mohamed-Ali.png">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "SINATRA">
+    <img class = "backImage" src= "https://i.ibb.co/T8hzx9m/Frank-Sinatra-NYC-New-York-1956.png">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "SINATRA">
+    <img class = "backImage" src= "https://i.ibb.co/9nD36gT/Frank-Sinatra.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "MCQUEEN">
+    <img class = "backImage" src= "https://i.ibb.co/8BH28WJ/This-article-features-8-essential-types-of-shirts-for-men-60-modern-ways-to-wear-each-shirt-style-how-they-should-fit-and-where-you-can-buy-them.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "JFK">
+    <img class = "backImage" src= "https://i.ibb.co/kSqTsGF/john-f-kennedy-63160-1280.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "MLK">
+    <img class = "backImage" src= "https://i.ibb.co/4sMDQb9/martin-luther-king-572586-1920.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "MLK">
+    <img class = "backImage" src= "https://i.ibb.co/02NhCQ3/martin-luther-king-jr-393870-1920.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "MARVIN">
+    <img class = "backImage" src= "https://i.ibb.co/T4n650c/Marvin-Gaye-height-and-weight.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "MARVIN">
+    <img class = "backImage" src= "https://i.ibb.co/0y85QGd/Marvin-Gaye-NYC-1974.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "MICK">
+    <img class = "backImage" src= "https://i.ibb.co/Gd7NTf5/Rare-Photos-of-a-Young-Mick-Jagger-from-the-1960s-vintage-everyday.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "MICK">
+    <img class = "backImage" src= "https://i.ibb.co/XFkwrtf/Richard-Avedon-Mick-Jagger-February-17-1974.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "REDFORD">
+    <img class = "backImage" src= "https://i.ibb.co/Lg2TLzd/Robert-redford-oldhollywood-robertredford.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "MCQUEEN">
+    <img class = "backImage" src= "https://i.ibb.co/j5388rP/Steve-Mc-Queen-Source-by-cathydubuc74.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "MARILYN">
+    <img class = "backImage" src= "https://i.ibb.co/Q8gBcDj/stockvault-jean-arthur200339.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "MARILYN">
+    <img class = "backImage" src= "https://i.ibb.co/bg9jn54/stockvault-marilyn-monroe200349.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "REDFORD">
+    <img class = "backImage" src= "https://i.ibb.co/bJzQk2T/US-actor-Robert-Redford-photographed-in-1975.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "AUDREY">
+    <img class = "backImage" src= "https://i.ibb.co/318hpSJ/An-exhibition-celebrating-the-life-and-work-of-Audrey-Hepburn-will-open-at-National-Portrait-Gallery-in-2015.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+    <div class = "card" data-person = "AUDREY">
+    <img class = "backImage" src= "https://i.ibb.co/HFnmydh/6e51853c-6dc7-4c57-9fba-3af92d53b9c5.jpg">
+    <img class = "frontImage" src= "https://i.ibb.co/2nLVDMg/gie57-G77-T.jpg">
+</div>
+  </div>
+</body>
+<script src="index.js"></script>
+
+</html>
